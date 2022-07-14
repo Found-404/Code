@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // es5构造函数创建对象-------------------------
+        // // 利用构造函数创建对象
+        function Phone(name, price) {
+            this.name = name;
+            this.price = price;
+        };
+        // 在原型上添加方法
+        Phone.prototype.call = function() {
+            console.log('我可以打电话!');
+        };
+        //实例化对象
+        let HuaWei = new Phone('华为', 1999);
+        HuaWei.call();
+        console.log(HuaWei);
+
+        //es6使用class类创建对象-------------------------------
+        class Phone2 {
+            //构造方法 名字不能修改
+            constructor(name, price) {
+                this.name = name;
+                this.price = price;
+            }
+
+            //方法必须使用该语法,不能使用ES5的对象完整形式
+            call() {
+                console.log('我可以打电话!');
+            }
+        }
+        let onePlus = new Phone2('一加', 1999);
+        onePlus.call();
+        console.log(onePlus);
+    </script>
+</body>
+
+</html>

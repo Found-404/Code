@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jQuery-min.js"></script>
+    <script src="https://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+    <script src="https://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
+</head>
+
+<body>
+    <style>
+        label.error {
+            background: no-repeat 0 4px;
+            background-image: url('unchecked.gif');
+            margin-left: 6px;
+            padding-left: 14px;
+            color: red;
+        }
+    </style>
+
+    <body>
+        <form id="demoForm">
+            <p>
+                <label for="username">用户名：</label>
+                <input type="text" id="username" name="username" />
+            </p>
+            <p>
+                <label for="email">电子邮件：</label>
+                <input id="email" name="email" />
+            </p>
+            <p>
+                <label for="url">网址：</label>
+                <input id="url" name="url" />
+            </p>
+            <p>
+                <input type="submit" value="登录" />
+            </p>
+        </form>
+        <script>
+            $('#demoForm').validate({
+                rules: {
+                    username: {
+                        required: true,
+                        minlength: 2,
+                        maxlength: 10
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    url: {
+                        required: true,
+                        url: true
+                    }
+                },
+                messages: {
+                    username: {
+                        required: "请输入用户名",
+                        minlength: "至少输入{0}个字符",
+                        maxlength: "最多输入{0}个字符"
+                    },
+                    email: {
+                        required: "请输入邮箱",
+                        email: "邮箱格式不正确"
+                    },
+                    url: {
+                        required: "请输入网址",
+                        url: "网址格式不正确(完整的网址应包括http://或https://)"
+                    }
+                }
+            })
+        </script>
+
+
+    </body>
+
+</html>
