@@ -6,4 +6,4 @@
 
 ## 链接
 1. [Blog](https://found-404.github.io/found404.io/)
-2. [语雀](https://www.yuque.com/fun)
+2. [语雀](https://www.yuque.com/fund404/found404)

@@ -45,7 +45,7 @@ app.post('/api/login', function(req, res) {
     // 参数1：用户的信息对象
     // 参数2：加密的密钥
     // 参数2：配置对象，可以配置当前token的有效期
-    const tokenStr = jwt.sign({ username: userinfo.username }, secretKey, { expiresIn: '50s' })
+    const tokenStr = jwt.sign({ username: userinfo.username }, secretKey, { expiresIn: '30s' })
     res.send({
         status: 200,
         message: '登录成功！',
