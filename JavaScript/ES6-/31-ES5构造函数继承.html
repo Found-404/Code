@@ -37,6 +37,10 @@
         }
         //设置子级构造函数的原型
         SmartPhone.prototype = new Phone();
+        // 第二种写法
+        // SmartPhone.prototype = Object.create(Phone.prototype);
+
+
         // 矫正
         SmartPhone.prototype.constructor = SmartPhone;
 

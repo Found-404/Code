@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+    <style>
+        * {
+            margin: 5px 0px;
+        }
+        
+        .demo1 {
+            background-color: #afafaf;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 准备一个容器 -->
+    <div id="root">
+        <h2>hello {{name}}!</h2>
+        <a href="https://www.baidu.com/" @click.prevent="showInfo1">点我提示信息1</a>
+        <div class="demo1" @click="showInfo1">
+            <button @click.stop="showInfo1">点击</button>
+        </div>
+        <button @click.once="showInfo1">点击</button>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+        const vm = new Vue({
+            el: '#root',
+            data() {
+                return {
+                    name: 'FOund',
+                }
+            },
+            methods: {
+                showInfo1(event) {
+                    // console.log(this);  //此处的this是vm
+                    // console.log(event); 
+                    alert('hi!');
+                },
+            },
+        });
+    </script>
+</body>
+
+
+</html>

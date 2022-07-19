@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 准备一个容器 -->
+    <div id="root">
+        <h2>hello {{name}}!</h2>
+        <button v-on:click="showInfo1">(不传参)点我提示信息1</button>
+        <button @click="showInfo2(66,$event)">(传参)点我提示信息2</button>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+
+
+        const vm = new Vue({
+            el: '#root',
+            data() {
+                return {
+                    name: 'FOund',
+                }
+            },
+            methods: {
+                showInfo1(event) {
+                    // console.log(this);  //此处的this是vm
+                    // console.log(event); 
+                    alert('hi!');
+                },
+                showInfo2(number, a) {
+                    console.log(number, a);
+                    alert('hi!!');
+                },
+            },
+        });
+    </script>
+</body>
+
+
+</html>

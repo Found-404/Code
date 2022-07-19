@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+        }
+        
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        
+        section {
+            width: 300px;
+            height: 300px;
+            /* border: 1px solid; */
+            margin: auto;
+            position: relative;
+            /*搭建3d舞台*/
+            transform-style: preserve-3d;
+            /* 必须填加景深 */
+            perspective: 800px;
+            transform: rotate3d(0, 0, 0, 10deg);
+        }
+        
+        div {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            left: 50%;
+            top: 50%;
+            margin-top: -100px;
+            margin-left: -100px;
+        }
+        
+        div:nth-child(1) {
+            background-color: #afafaf;
+            transform: translateZ(100px);
+        }
+        
+        div:nth-child(2) {
+            background-color: #8f8f8f;
+            transform: translateZ(-100px);
+        }
+        
+        div:nth-child(3) {
+            background-color: #767676;
+            transform: translateX(-100px) rotateY(90deg);
+        }
+        
+        div:nth-child(4) {
+            background-color: #545454;
+            transform: translateX(100px) rotateY(90deg);
+        }
+        
+        div:nth-child(5) {
+            background-color: #545454;
+            transform: translateY(100px) rotateX(90deg);
+        }
+        
+        div:nth-child(6) {
+            background-color: #545454;
+            transform: translateY(-100px) rotateX(90deg);
+        }
+        
+        menu {
+            position: relative;
+            width: 199px;
+            height: 204px;
+            border: 1px solid #afafaf;
+            margin: auto;
+            overflow: hidden;
+            background-color: #fff;
+        }
+        
+        menu ul {
+            position: absolute;
+            top: 10px;
+            left: 0px;
+            width: 400px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background-color: #fff;
+            transform: rotate(45deg) scale(2);
+        }
+        
+        menu ul li {
+            position: absolute;
+            border: 5px solid #ffffff;
+            filter: drop-shadow(0 0 1px#868686);
+        }
+        
+        menu ul li:nth-child(1) {
+            width: 290px;
+            height: 290px;
+        }
+        /*         
+        menu ul li:nth-child(2) {
+            width: 270px;
+            height: 270px;
+        }
+        
+        menu ul li:nth-child(3) {
+            width: 250px;
+            height: 250px;
+        }
+        
+        menu ul li:nth-child(4) {
+            width: 230px;
+            height: 230px;
+        } */
+    </style>
+</head>
+
+<body>
+    <section>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </section>
+
+    <menu>
+        <ul>
+            <li></li>
+        </ul>
+    </menu>
+
+</body>
+<script>
+    let ul = document.querySelector('ul');
+    let width = 290;
+    let height = 290;
+    for (let i = 0; i < 14; i++) {
+        width -= 20;
+        height -= 20;
+        let li = document.createElement('li');
+        li.style.width = `${width}px`;
+        li.style.height = `${height}px`;
+        ul.appendChild(li);
+    }
+</script>
+
+</html>

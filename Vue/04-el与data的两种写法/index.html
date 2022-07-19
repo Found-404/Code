@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 准备好一个容器 -->
+    <div class="root">
+        <h1>你好，{{name}}</h1>
+    </div>
+
+    <script>
+        Vue.config.productionTip = false;
+
+        // el的两种写法:
+        // const v = new Vue({
+        //     // 1.第一种绑定写法
+        //     // el: '.root',    
+        //     data: {
+        //         name: 'Found',
+        //     }
+        // });
+        // console.log(v);
+        // // 2.第二种绑定写法
+        // v.$mount('.root');
+
+        // data的两种写法:
+        new Vue({
+            el: '.root',
+            // 1.data的第一种写法：对象式
+            // data: {
+            //     name: 'FOund'
+            // }
+            // 2.data的第二种写法：函数式
+            data() {
+                return {
+                    name: 'FOund'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
