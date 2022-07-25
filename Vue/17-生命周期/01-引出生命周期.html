@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h2 v-if="a">001</h2>
+        <h2 :style="{opacity}">Hello world</h2>
+
+        <button @click="stop">点我停止变换</button>
+        <button @click="opacity=1">点我透明度为1</button>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+
+        const vm = new Vue({
+            el: '#root',
+            data() {
+                return {
+                    opacity: 1,
+                    a: false
+                }
+            },
+            methods: {
+                stop() {
+                    clearInterval(this.timer);
+                }
+            },
+            // 挂载
+            // Vue完成模板解析并把初始的真实DOM元素放入页面后（挂载完毕）调用mounted
+            // （将真实DOM放入页面叫做挂载）
+            // （mounted是在挂载完毕之后调用）
+            mounted() {
+                console.log('mounted');
+                this.timer = setInterval(() => {
+                    vm.opacity -= 0.01;
+                    if (vm.opacity <= 0) {
+                        vm.opacity = 1;
+                    }
+                }, 16);
+            },
+        });
+
+        // 通过外部定时器实现
+        // setInterval(() => {
+        //     vm.opacity -= 0.01;
+        //     if (vm.opacity <= 0) {
+        //         vm.opacity = 1;
+        //     }
+        // }, 16);
+    </script>
+</body>
+
+</html>

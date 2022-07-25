@@ -43,6 +43,9 @@
         },
     };
     console.log(youxi);
+    //Symbol.for('say')产生的标识是唯一的，所以可以调用定义在youxi里面的[Symbol.for('say')]方法
+    youxi[Symbol.for('say')]();
+    youxi[Symbol.for('zibao')]();
 </script>
 
 </html>

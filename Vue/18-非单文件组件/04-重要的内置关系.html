@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <school></school>
+
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+
+        Vue.prototype.x = 99;
+
+        // 定义school组件
+        const school = Vue.extend({
+            template: `
+            <div>
+                <h2>名：{{name}}</h2>
+                <h2>{{address}}</h2>
+                <button @click="showX">点我获取x</button>
+            </div>
+            `,
+            data() {
+                return {
+                    name: 'FOund',
+                    address: 'zz'
+                }
+            },
+            methods: {
+                showX() {
+                    console.log(this);
+                    console.log(this.x);
+                }
+            },
+
+        });
+
+        new Vue({
+            el: "#root",
+            data() {
+                return {
+                    msg: '123',
+                }
+            },
+            components: {
+                school
+            }
+
+        });
+
+        //     function demo() {
+        //         this.a = 1;
+        //         this.b = 2
+        //     };
+
+        //     const d = new demo();
+
+        //     console.log(demo.prototype); //显式原型属性
+
+        //     console.log(d.__proto__); //隐式原型属性
+
+        //     // 程序员通过显式原型属性操作原型对象，追加一个x属性，值为99
+        //     demo.prototype.x = 99;
+
+        //     console.log(d);
+        //     console.log(d.x);
+        //     console.log(d.__proto__.x);
+        //
+    </script>
+</body>
+
+</html>

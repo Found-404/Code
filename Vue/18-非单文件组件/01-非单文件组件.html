@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <hello></hello>
+        <!-- 3.使用组件，编写组件标签 -->
+        <school-assembly></school-assembly>
+        <hr>
+        <student></student>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+        // 1.创建组件
+        // 创建school组件
+        const school = Vue.extend({
+            name: 'xvexiao',
+            // el: '#root',
+            // 组件无需定义他的位置，它的存在地点听从大哥(vm)
+            template: `
+            <div>
+                <h2>学校名称:{{schoolName}}</h2>
+                <h2>学校地址:{{address}}</h2>
+            </div>
+            `,
+            data() {
+                return {
+                    schoolName: 'zhiyou',
+                    address: '郑州',
+                }
+            },
+        });
+        // 创建student组件
+        const student = {
+            // el: '#root',
+            // 组件无需定义他的位置，它的存在地点听从大哥(vm)
+            template: `
+            <div>
+                <h2>学生名称:{{studentName}}</h2>
+                <h2>学生年龄:{{age}}</h2>
+                <button>点击</button>
+            </div>
+            `,
+            data() {
+                return {
+                    studentName: 'FOund',
+                    age: 20
+                }
+            },
+        };
+
+        // 创建hello组件
+        const hello = Vue.extend({
+            // el: '#root',
+            // 组件无需定义他的位置，它的存在地点听从大哥(vm)
+            template: `
+                <h2>Hello {{name}}</h2>
+            `,
+            data() {
+                return {
+                    name: 'FOund',
+                }
+            },
+        });
+        // 2.注册组件（全局注册）
+        Vue.component('hello', hello);
+        // 创建vm
+        new Vue({
+            el: '#root',
+            data() {
+                return {
+                    msg: '你好啊'
+                }
+            },
+            // 组件门
+            // 2.注册组件（局部注册）
+            components: {
+                // 组件命名
+                // 驼峰命名法
+                // 在使用组件步骤中标签名字应为
+                // <school-assembly></school-assembly>或者
+                // <school-Assembly></school-Assembly>
+                schoolAssembly: school,
+                // 简写形式
+                student
+            }
+        })
+    </script>
+</body>
+
+</html>

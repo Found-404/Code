@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <hello></hello>
+        <school></school>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+
+        // 定义school组件
+        const school = Vue.extend({
+            template: `
+            <div>
+                <h2>名：{{name}}</h2>
+               <h2>{{address}}</h2>
+               <button @click="showName">点我显示名字</button>
+            </div>
+            `,
+            data() {
+                return {
+                    name: 'FOund',
+                    address: 'zz'
+                }
+            },
+            methods: {
+                showName() {
+                    console.log(this);
+                }
+            },
+        });
+        // 定义text组件
+        const test = Vue.extend({
+            template: `<span>text组件</span>`,
+        });
+
+
+
+
+        // 定义hello组件
+        const hello = Vue.extend({
+            template: `
+            <div>
+                <h2>Hello {{name}}</h2>
+                <test></test>
+            </div>
+            `,
+            data() {
+                return {
+                    name: 'FOund'
+                }
+            },
+            components: {
+                test
+            }
+        });
+        const vm = new Vue({
+            el: '#root',
+            components: {
+                school,
+                hello
+            }
+        });
+    </script>
+</body>
+
+</html>

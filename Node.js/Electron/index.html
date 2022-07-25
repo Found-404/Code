@@ -6,6 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="./src/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="./src/message.css">
     <style>
         * {
@@ -17,10 +21,11 @@
         }
         
         .wrapper {
+            position: relative;
             width: 450px;
             background: #fff;
             padding: 30px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 1);
         }
         
         .wrapper .input-data {
@@ -149,11 +154,45 @@
             margin-bottom: 10px;
             box-shadow: 0px 0px 10px -2px #000;
         }
+        
+        .text {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            font-size: 20px;
+            font-weight: 900;
+            color: #fff;
+        }
+        
+        .btn {
+            border: none;
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            top: 8px;
+            left: 422px;
+            border-radius: 50%;
+            background-color: #9151c1;
+            box-shadow: 0px 0px 7px -2px #000 inset;
+        }
+        
+        .SignIn {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            right: 32px;
+            bottom: 31px;
+            color: #d5d5d5;
+            font-size: 30px;
+        }
     </style>
 </head>
 
 <body>
-    <section style="border-radius: 10px;">
+    <section style="border-radius: 10px; position: relative;">
         <header>
             <div class="dragAndDrop">
                 <p>测试程序</p>
@@ -164,15 +203,22 @@
                 <li id="close">╳</li>
             </ul>
         </header>
-        <div class="img">
+        <div class="img" style="cursor:pointer;">
             <img src="./image/001.png" alt="" width="100%" height="100%">
         </div>
         <div class="wrapper">
             <div class="input-data">
-                <input type="text" required>
+                <input type="text" required id="ipt">
                 <div class="underLine"></div>
                 <label>Name</label>
             </div>
+            <div class="btn"></div>
+            <span class="SignIn animated fadeInLeft">
+                <ion-icon name="caret-forward-circle"></ion-icon>
+            </span>
+        </div>
+        <div class="text">
+            <p>FØund404</p>
         </div>
     </section>
 </body>
@@ -181,6 +227,24 @@
     var configs = {};
     // configs 为配置参数，可省略
     Qmsg.success("进入成功", configs);
+</script>
+<script>
+    const $ = x => document.querySelector(x);
+
+    $('.img').addEventListener('click', function() {
+        Qmsg.error({
+            content: "😅😄😅",
+            timeout: 100
+        })
+    });
+
+    $('#ipt').addEventListener('focus', function() {
+        $('.SignIn').className = 'SignIn animated fadeInLeft';
+        $('.SignIn').style.display = 'flex';
+    });
+    $('#ipt').addEventListener('blur', function() {
+        $('.SignIn').className = 'SignIn animated fadeOutRight';
+    });
 </script>
 <script>
     var ipc = require('electron').ipcRenderer;

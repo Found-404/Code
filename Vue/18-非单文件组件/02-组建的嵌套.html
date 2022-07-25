@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+
+        // 定义school组件
+        const student = Vue.extend({
+            template: `
+            <div>
+                <h2>学生：{{name}}</h2>
+               <h2>年龄：{{age}}</h2>
+            </div>
+            `,
+            data() {
+                return {
+                    name: 'FOund',
+                    age: 18
+                }
+            }
+        });
+
+        // 定义school组件
+        const school = Vue.extend({
+            template: `
+            <div>
+                <h2>名：{{name}}</h2>
+               <h2>{{address}}</h2>
+               <student></student>
+            </div>
+            `,
+            data() {
+                return {
+                    name: 'FOund',
+                    address: 'zz'
+                }
+            },
+            // 注册组件（局部）
+            components: {
+                student
+            }
+        });
+
+        // 定义hello组件
+        const hello = Vue.extend({
+            template: `
+            <div>
+            <h2>Hello {{name}}</h2>    
+            </div>
+            `,
+            data() {
+                return {
+                    name: 'FOund',
+                }
+            },
+        });
+
+        // 定义app组件
+        const app = Vue.extend({
+            template: `    
+            <div>
+                <hello></hello>
+                <school></school>
+            </div>
+            `,
+            components: {
+                school,
+                hello
+            }
+        });
+
+        new Vue({
+            template: `<app></app>`,
+            el: '#root',
+            // 注册组件（局部）
+            components: {
+                app
+            }
+        })
+    </script>
+</body>
+
+</html>
