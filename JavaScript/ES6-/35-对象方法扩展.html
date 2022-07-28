@@ -44,9 +44,28 @@
             shuzu: [1, 2, 3]
         }
         Object.setPrototypeOf(school, cities)
-        console.log(school); //{name: 'abc'}
+        console.log(school); //{name: 'abc'} 此时他的原型对象已经指向了cities
 
         console.log(Object.getPrototypeOf(school));
+
+
+
+        // Reflect对象与Proxy对象一样，也是 ES6 为了操作对象而提供的新 API。Reflect对象的设计目的有这样几个。
+        Object.defineProperty(obj, 'wage', {
+            configurable: true,
+            enumerable: true,
+            set(value) {
+                console.log('value', value);
+                if (value < 0) {
+                    throw Error('不能为负数');
+                }
+                this._wage = value;
+                document.querySelector('h1').innerText = value;
+            },
+            get() {
+                console.log('get方法被调用');
+            }
+        })
     </script>
 </body>
 

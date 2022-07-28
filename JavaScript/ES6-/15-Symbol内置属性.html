@@ -29,6 +29,7 @@
     const arr = [1, 2, 3];
     const arr2 = [4, 5, 6];
     arr2[Symbol.isConcatSpreadable] = false;
+    // arr2[Symbol.isConcatSpreadable] = true;
     // 为false表示不展开合并
     console.log(arr.concat(arr2)); //[1, 2, 3, Array(3)]
 

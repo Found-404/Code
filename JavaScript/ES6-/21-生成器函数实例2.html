@@ -47,34 +47,34 @@
         iterator.next();
 
         //博客实例------------------------
-        // function draw(count) {
-        //     //抽奖模拟 如转盘转动
-        //     setTimeout(() => {
-        //         console.log(count);
-        //         span.innerHTML = '抽奖剩余次数' + count;
-        //     }, 1000);
-        // }
+        function draw(count) {
+            //抽奖模拟 如转盘转动
+            setTimeout(() => {
+                console.log(count);
+                span.innerHTML = '抽奖剩余次数' + count;
+            }, 1000);
+        }
 
-        // function* generatorDraw(count) {
-        //     // 生成generator函数
-        //     while (count > 0) {
-        //         count--;
-        //         yield draw(count);
-        //     }
-        // }
+        function* generatorDraw(count) {
+            // 生成generator函数
+            while (count > 0) {
+                count--;
+                yield draw(count);
+            }
+        }
 
-        // let beginDraw = generatorDraw(3); // 这个3一般是从服务端获取   开始调用；
+        let beginDraw = generatorDraw(3); // 这个3一般是从服务端获取   开始调用；
 
-        // const btn = document.createElement("button");
-        // btn.innerText = "点击抽奖";
-        // btn.addEventListener("click", function() {
-        //     beginDraw.next();
-        // });
+        const btn = document.createElement("button");
+        btn.innerText = "点击抽奖";
+        btn.addEventListener("click", function() {
+            beginDraw.next();
+        });
 
-        // const span = document.createElement('span');
+        const span = document.createElement('span');
 
-        // document.body.appendChild(btn);
-        // document.body.appendChild(span);
+        document.body.appendChild(btn);
+        document.body.appendChild(span);
     </script>
 </body>
 

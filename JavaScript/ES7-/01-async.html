@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // async：异步函数
+        // await：同步操作
+        // es7中提出来的异步解决方法,是目前解决异步编程终它基极解决方案,
+        // 于promise为基础,其实也就是generator的高级语法糖,本身自己就相当于一个迭代生成器(状态机),它并不需要手动通过next()来调用自己,与普通函数一样
+
+
+        // async就相当于generator函数中的*,await相当于yield,
+        // async 用于申明一个 function 是异步的，而 await 用于等待一个异步方法执行完成。
+
+        async function fn() {
+            var p1 = await new Promise(function(resolve) {
+                resolve('res1');
+                console.log(1);
+            })
+            var p2 = await new Promise(function(resolve) {
+                resolve('res2');
+                console.log(2);
+            })
+            var p3 = await new Promise(function(resolve) {
+                resolve('res3');
+                console.log(3);
+            });
+            // console.log(p1, p2, p3);
+
+
+            // p1.then(function(r1) {
+            //     console.log(r1);
+            //     return p2;
+            // }).then(function(r2) {
+            //     console.log(r2);
+            //     return p3;
+            // }).then(function(r3) {
+            //     console.log(r3);
+            // })
+        }
+
+        // fn()
+
+
+        function log(time) {
+            setTimeout(function() {
+                console.log(time);
+                return 1;
+            }, time)
+        }
+        async function fun() {
+            await log(1000);
+            console.log(123);
+            await log(2000);
+            log(3000);
+            console.log(321);
+            // console.log('a:' + a);
+            // console.log('b:' + b);
+            // console.log(1)
+        }
+        fun();
+        // 立即输出 undefined 1
+        // 1秒后输出 1000
+        // 2秒后输出 2000
+        // 3秒后输出 3000
+
+        // async function func() {
+        //     console.log('async function is running!');
+        //     const num1 = await 200;
+        //     console.log(`num1 is ${num1}`);
+        //     const num2 = await num1 + 100;
+        //     console.log(`num2 is ${num2}`);
+        //     const num3 = await num2 + 100;
+        //     console.log(`num3 is ${num3}`);
+        // }
+
+        // func();
+        // console.log('run me before await!');
+        // async function is running!
+        // run me before await!
+        // num1 is 200
+        // num2 is 300
+        // num3 is 400
+
+
+
+        // new Promise((resolve, reject) => {
+        //         console.log("外部promise");
+        //         resolve();
+        //     })
+        //     .then(() => {
+        //         console.log("外部第一个then");
+        //         return new Promise((resolve, reject) => {
+        //                 console.log("内部promise");
+        //                 resolve();
+        //             })
+        //             .then(() => {
+        //                 console.log("内部第一个then");
+        //             })
+        //             .then(() => {
+        //                 console.log("内部第二个then");
+        //             });
+        //     }) //这里返回的对象是最后一个.then返回的对象，第一次时状态为‘pending’
+        //     .then(() => {
+        //         // 所以第一次这里会缓存起来并不是加入队列
+        //         console.log("外部第二个then");
+        //     });
+    </script>
+
+</body>
+
+</html>

@@ -12,37 +12,42 @@
 
 </body>
 <script>
-    // 向对象中添加方法 up down
-    // let game = {};
+    // 向对象中添加方法 up down 属性name
+    let game = {};
 
 
     // 第一种写法---------------------------------
     // // 声明一个对象
-    // let methods = {
-    //     up: Symbol(),
-    //     down: Symbol()
-    // };
-    // game[methods.up] = function() {
-    //     console.log('我可以改变形状');
-    // };
-    // game[methods.down] = function() {
-    //     console.log('我可以快速下降');
-    // };
-    // console.log(game);
+    let methods = {
+        name: Symbol('name'),
+        up: Symbol('up'),
+        down: Symbol('down'),
+    };
+    game[methods.up] = function() {
+        console.log('我可以改变形状');
+    };
+    game[methods.down] = function() {
+        console.log('我可以快速下降');
+    };
+    game[methods.name] = 'A神';
+    console.log(game[methods.name]);
+    game[methods.up]();
+    game[methods.down]();
 
 
 
+    console.log('------------------------------------');
     // 第二种写法------------------------------------
     let youxi = {
-        name: '狼人杀',
-        [Symbol('say')]: function() {
+        [Symbol.for('name')]: '狼人杀',
+        [Symbol.for('say')]: function() {
             console.log('我可以发言');
         },
-        [Symbol('zibao')]: function() {
+        [Symbol.for('zibao')]: function() {
             console.log('我可以自爆');
         },
     };
-    console.log(youxi);
+    console.log(youxi[Symbol.for('name')]);
     //Symbol.for('say')产生的标识是唯一的，所以可以调用定义在youxi里面的[Symbol.for('say')]方法
     youxi[Symbol.for('say')]();
     youxi[Symbol.for('zibao')]();

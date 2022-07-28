@@ -1,11 +1,3 @@
-<!--
- * @Author: error: git config user.name && git config user.email & please set dead value or install git
- * @Date: 2022-06-01 13:19:24
- * @LastEditors: error: git config user.name && git config user.email & please set dead value or install git
- * @LastEditTime: 2022-06-02 10:02:58
- * @FilePath: \code\code\JavaScript\ES6-\26-集合介绍与API.html
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,20 +16,20 @@
         // 可以传入初始参数
         let s2 = new Set(['红', '黑', '白', '灰', '红']);
         console.log(s2 instanceof Object); //true
-        console.log(s2);
+        console.log(s2); //Set(4) {'红', '黑', '白', '灰'}
         //元素个数
-        console.log(s2.size);
+        console.log(s2.size); // 4
         //添加元素
         s2.add('蓝');
-        console.log(s2);
+        console.log(s2); //Set(5) {'红', '黑', '白', '灰', '蓝'}
         //删除元素
         s2.delete('黑');
-        console.log(s2);
+        console.log(s2); //Set(4) {'红', '白', '灰', '蓝'}
         //检测元素是否存在
         console.log(s2.has('橙')); //false
         //清空集合
         s2.clear();
-        console.log(s2);
+        console.log(s2); //Set(0) {size: 0}
     </script>
 </body>
 

@@ -19,11 +19,11 @@
         console.log('hello generator');
         //yield 相当于函数代码的分隔符
         yield '一直没有耳朵';
-        // console.log(222);
+        console.log(222);
         yield '一直没有尾巴';
-        // console.log(333);
+        console.log(333);
         yield '真奇怪';
-        // console.log(444);
+        console.log(444);
     }
     let iterator = gen();
     // console.log(iterator);
@@ -35,9 +35,9 @@
     console.log(iterator.next());
 
     // 遍历
-    // for (let v of gen()) {
-    //     console.log(v);
-    // }
+    for (let v of gen()) {
+        console.log('@' + v);
+    }
 </script>
 
 </html>

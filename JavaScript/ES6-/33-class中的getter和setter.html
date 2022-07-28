@@ -20,19 +20,26 @@
     <script>
         //get和set
         class Phone {
+            constructor(age) {
+                this.age = age;
+            }
+            get name() {
+                console.log('名字被读取');
+                return 'A神'
+            }
             get price() {
                 console.log('价格属性被读取');
                 return '123';
                 //return 返回值给了s.price
             }
             set price(newVal) {
-                console.log('价格属性' + newVal + '被修改');
+                console.log('价格属性被修改成' + newVal);
             }
         }
-
         //实例化对象
-        let s = new Phone();
-        // console.log(s.price); //价格属性被读取
+        let s = new Phone('18');
+        console.log(s);
+        console.log(s.price); //价格属性被读取
         //                      123
 
         s.price = 'abc';

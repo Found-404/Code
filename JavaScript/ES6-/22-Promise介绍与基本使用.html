@@ -1,11 +1,3 @@
-<!--
- * @Author: error: git config user.name && git config user.email & please set dead value or install git
- * @Date: 2022-05-31 14:13:26
- * @LastEditors: error: git config user.name && git config user.email & please set dead value or install git
- * @LastEditTime: 2022-06-01 19:04:29
- * @FilePath: \code\code\JavaScript\ES6-\22-Promise介绍与基本使用.html
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,16 +16,18 @@
 
         // p的状态有 初始化 成功 失败
         const p = new Promise(function(resolve, reject) {
+            console.log('立即执行');
             // 封装异步操作
             setTimeout(function() {
-                //
+                console.log(123);
+
                 let date = '数据库中用户数数据';
-
                 resolve(date);
+                let err = '数据调用失败';
+                reject(err);
 
-                // let err = '数据调用失败';
-                // reject(err);
             }, 1000);
+
         });
 
         // 调用 promise 对象的then方法中传入的两个形参都是函数类型
@@ -50,22 +44,22 @@
 
 
         // 实例二
-        let fo = new Promise((resolve, reject) => {
-            //做一些异步操作
-            setTimeout(function() {
-                var num = Math.ceil(Math.random() * 10); //生成1-10的随机数
-                if (num <= 5) {
-                    resolve(num);
-                } else {
-                    reject('数字太大了');
-                }
-            }, 2000);
-        });
-        fo.then((data) => {
-            console.log('resolved', data);
-        }, (err) => {
-            console.log('rejected', err);
-        });
+        // let fo = new Promise((resolve, reject) => {
+        //     //做一些异步操作
+        //     setTimeout(function() {
+        //         var num = Math.ceil(Math.random() * 10); //生成1-10的随机数
+        //         if (num <= 5) {
+        //             resolve(num);
+        //         } else {
+        //             reject('数字太大了');
+        //         }
+        //     }, 2000);
+        // });
+        // fo.then((data) => {
+        //     console.log('resolved', data);
+        // }, (err) => {
+        //     console.log('rejected', err);
+        // });
     </script>
 </body>
 
