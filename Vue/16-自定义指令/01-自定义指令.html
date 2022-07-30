@@ -24,7 +24,7 @@
         Vue.config.productionTip = false;
 
         // 定义一个全局指令fbind
-        Vue.directives('fbind', {
+        Vue.directive('fbind', {
             // Vue规定了指定函数名bind,inserted,updata
             // 指令与元素成功绑定时（开始）
             bind(element, binding) {
@@ -39,13 +39,13 @@
                 element.value = binding.value;
             }
         });
-        // 全局指令第二种函数写法
-        Vue.directives('fbind', function(element, binfing) {
-            element.innerText = binfing.value * 10;
-            // 第一个参数：dom元素
-            // 第二个参数：该被绑定元素的部分属性
-            console.log(element, binfing);
-        });
+        // // 全局指令第二种函数写法
+        // Vue.directives('fbind', function(element, binfing) {
+        //     element.innerText = binfing.value * 10;
+        //     // 第一个参数：dom元素
+        //     // 第二个参数：该被绑定元素的部分属性
+        //     console.log(element, binfing);
+        // });
 
 
         new Vue({
@@ -72,21 +72,21 @@
                     console.log(element, binfing);
                 },
                 // 定义一个局部指令fbind(对象写法)
-                fbind: {
-                    // Vue规定了指定函数名bind,inserted,updata
-                    // 指令与元素成功绑定时（开始）
-                    bind(element, binding) {
-                        element.value = binding.value;
-                    },
-                    // 指令所在元素被插入页面时
-                    inserted(element, binding) {
-                        element.focus();
-                    },
-                    // 指令所在模块被重新赋值时
-                    updata(element, binding) {
-                        element.value = binding.value;
-                    }
-                }
+                // fbind: {
+                //     // Vue规定了指定函数名bind,inserted,updata
+                //     // 指令与元素成功绑定时（开始）
+                //     bind(element, binding) {
+                //         element.value = binding.value;
+                //     },
+                //     // 指令所在元素被插入页面时
+                //     inserted(element, binding) {
+                //         element.focus();
+                //     },
+                //     // 指令所在模块被重新赋值时
+                //     updata(element, binding) {
+                //         element.value = binding.value;
+                //     }
+                // }
             }
         })
     </script>

@@ -5,18 +5,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="./favicon.ico">
     <title>Document</title>
-
 </head>
 
 <body>
-    <div id="app">
-        <App>
+    <script>
+        var obj = {
+            name: '小明哥',
+            age: 25,
+            sex: true
+        }
 
+        Reflect.set(obj, 'height', 175);
 
-        </App>
-    </div>
+        console.log(obj);
+
+        console.log(Reflect.get(obj, 'height')); //175
+    </script>
 </body>
 
 </html>

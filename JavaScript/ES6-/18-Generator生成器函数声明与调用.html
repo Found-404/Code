@@ -27,17 +27,17 @@
     }
     let iterator = gen();
     // console.log(iterator);
-    //必须调用next方法才会执行
-    //借助iterator.next()才可以执行函数内代码
+    // 必须调用next方法才会执行
+    // 借助iterator.next()才可以执行函数内代码
     console.log(iterator.next());
     console.log(iterator.next());
     console.log(iterator.next());
     console.log(iterator.next());
 
     // 遍历
-    for (let v of gen()) {
-        console.log('@' + v);
-    }
+    // for (let v of gen()) {
+    //     console.log('@' + v);
+    // }
 </script>
 
 </html>

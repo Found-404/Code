@@ -18,7 +18,7 @@ app.use(
 // 托管静态页面
 app.use(express.static('./pages'))
     // 解析 POST 提交过来的表单数据
-app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: false }));
 
 // 登录的 API 接口
 app.post('/api/login', (req, res) => {
