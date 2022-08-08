@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root">
+
+    </div>
+
+    <!-- 1.引入reactjs文件 -->
+    <script src="../js文件/react.development.js"></script>
+    <script src="../js文件/react-dom.development.js"></script>
+    <script src="../js文件/babel.min.js"></script>
+
+    <script type="text/babel">
+        // 创建类式组件
+        class Demo extends React.Component{
+
+            // 构造器执行一次，渲染react的时候.render自动帮我们new了Demo
+            constructor(props){
+                super(props)
+                this.state = {
+                    isHot:true
+                }
+                this.change=this.change.bind(this);
+                // 解决change中的this指向问题
+            }
+
+            // render调用几次？——1+n次，1是初始化执行的一次，n是你每次调用执行的次数
+            render(){
+                const {isHot} = this.state
+                return <h1 onClick={this.change}>今天天气很{isHot ?"炎热":"凉爽"}</h1>
+            }
+
+            // change() 点几次调用几次
+            change() {
+                // change.放在哪里? - Demo的原型对象上，供实例使用
+                // 由于change是作为onClick的回调，所以不是通过实例调用的，是直接调用
+                // 类中的方法默认开启了局部的严格模式，所以change中的this为undefined
+                // this.state.isHot = !this.state.isHot;//错误写法
+
+                // 严重注意：state要借助React.Component原型上的setStateAPI进行更新
+                // 且更新是一种合并，不是替换
+                this.setState({isHot:!isHot})
+
+                console.log('修改天气');
+                console.log(this);
+            }
+        };
+        // 渲染React元素
+        ReactDOM.render(<Demo/>, document.getElementById('root'));
+
+        // function change() {
+        //     console.log('修改天气');
+        //     console.log(this);
+        // }
+    </script>
+</body>
+
+</html>

@@ -15,7 +15,7 @@ const mw2 = (req, res, next) => {
 app.get('/', mw1, mw2, (req, res) => {
     res.send('Home page!');
 });
-app.get('/user', (req, res) => {
+app.get('/user',mw2, (req, res) => {
     res.send('User page!');
 });
 // 启动服务器

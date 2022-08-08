@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root1"></div>
+    <div id="root2"></div>
+    <div id="root3"></div>
+
+    <!-- 1.引入reactjs文件 -->
+    <script src="../js文件/react.development.js"></script>
+    <script src="../js文件/react-dom.development.js"></script>
+    <script src="../js文件/babel.min.js"></script>
+
+    <script type="text/babel">
+
+        // 创建组件
+        class Demo extends React.Component{
+            // 初始化状态
+            state = {}
+
+            render(){
+                console.log(this.props);
+                const {name,age,sex}=this.props;
+                return (
+                    <ul>
+                        <li>姓名：{name}</li>
+                        <li>性别：{age}</li>
+                        <li>年龄：{sex}</li>
+                    </ul>
+                )
+            }
+        };
+
+        // 渲染组件到页面
+        ReactDOM.render(<Demo name="jerry" age="19" sex="男"/>, document.getElementById('root1'));
+        ReactDOM.render(<Demo name="tom" age="18" sex="女"/>, document.getElementById('root2'));
+
+        const p={
+            name:'老刘',
+            age:18,
+            sex:'女'
+        }
+        ReactDOM.render(<Demo {...p}/>, document.getElementById('root3'));
+    </script>
+</body>
+
+</html>

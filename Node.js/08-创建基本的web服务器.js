@@ -13,3 +13,12 @@ server.on('request', function(req, res) {
 server.listen(8080, function() {
     console.log('server running at http://127.0.0.1:8080');
 });
+
+// const http = require("http");
+// const gc = http.Server(function(req,res){
+//     console.log('有人访问服务器');
+//     res.end('hellow word')
+// })
+// gc.listen(3000,function(){
+//     console.log('node is ok');
+// })

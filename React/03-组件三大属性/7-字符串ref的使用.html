@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root">
+
+    </div>
+
+    <!-- 1.引入reactjs文件 -->
+    <script src="../js文件/react.development.js"></script>
+    <script src="../js文件/react-dom.development.js"></script>
+    <script src="../js文件/babel.min.js"></script>
+
+    <script type="text/babel">
+
+        class Demo extends React.Component{
+            //展示左侧输入框数据
+            showData=()=>{
+                const {input1} = this.refs
+                console.log(input1.value);
+            }
+
+            // 展示右侧输入框数据
+            showData2=()=>{
+                const {input2} = this.refs
+                console.log(input2.value);
+            }
+
+            render(){
+
+                return(
+                    <div>
+                        <input ref="input1" type="text" placeholder="点击按钮提示数据"/>
+                        <button onClick={this.showData}>点我提示左侧信息</button>
+                        <input onBlur={this.showData2} ref="input2" type="text" placeholder="失去焦点提示数据"/>
+                    </div>
+                )
+            }
+        };
+        ReactDOM.render(<Demo/>, document.getElementById('root'));
+
+    </script>
+</body>
+
+</html>

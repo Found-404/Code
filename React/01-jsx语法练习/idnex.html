@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root">
+
+    </div>
+
+    <!-- 1.引入reactjs文件 -->
+    <script src="../js文件/react.development.js"></script>
+    <script src="../js文件/react-dom.development.js"></script>
+    <script src="../js文件/babel.min.js"></script>
+
+    <script type="text/babel">
+
+        const data = ['01','02','03'];
+
+
+
+        const CDOM=(
+            <div>
+                <h1>前端js框架列表</h1>
+                <ul>
+                   {
+
+                    data.map((item,index)=>{
+                        return <li key='index'>item</li>
+                    })
+
+                   }
+                </ul>
+            </div>
+        )
+
+        // 3.渲染React元素
+        // 参数1：要渲染的React元素
+        // 参数2：挂载点相当于vue中的容器
+        ReactDOM.render(CDOM, document.getElementById('root'))
+    </script>
+</body>
+
+</html>

@@ -2,7 +2,8 @@
   <div class="test">
       <h1>学生名称：{{name}}</h1>
       <h1>学生的性别：{{sex}}</h1>
-      <button @click="sendStudentName">把学生名给app</button>
+
+      <button @click="sentStudentName">把学生名给school组件</button>
   </div>
 </template>
 
@@ -12,14 +13,13 @@ export default {
     name:'Student',
     data() {
         return {
-            name:'zs',
-            sex:'男'
+            name:'张三',
+            sex:'男',
         }
     },
     methods: {
-        sendStudentName(){
-            // 触发Student组件实例对象身上的found事件
-            this.$emit('found',this.name)
+        sentStudentName(){
+            this.$bus.$emit('hello',this.name)
         }
     },
 }

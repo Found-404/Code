@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root">
+
+    </div>
+
+    <!-- 1.引入reactjs文件 -->
+    <script src="../js文件/react.development.js"></script>
+    <script src="../js文件/react-dom.development.js"></script>
+    <script src="../js文件/babel.min.js"></script>
+
+    <script type="text/babel">
+
+        class Login extends React.Component{
+            // 初始化状态
+            state={
+                username:"",//用户名
+                password:""//密码
+            }
+            // 保存表单数据到状态中
+            saveFromData=(dataType)=>{
+               return (ev)=>{
+                    // console.log(dataType,ev.target.value);
+                    this.setState({[dataType]:ev.target.value})
+               }
+            }
+
+            handleSubmit=(ev)=>{
+                ev.preventDefault();
+                const {username,password} = this.state
+                console.log(username,password);    
+            }
+            render(){
+                return(
+                    <form action="http://www.baidu.com" onSubmit={this.handleSubmit}>
+                        用户名：<input onChange={this.saveFromData('username')} type="text" name="username"/>
+                        密码：<input  onChange={this.saveFromData('password')} type="password" name="password"/>
+                        <button>登录</button>                     
+                    </form>
+                )
+            }
+        };
+        ReactDOM.render(<Login/>, document.getElementById('root'));
+
+    </script>
+</body>
+
+</html>
