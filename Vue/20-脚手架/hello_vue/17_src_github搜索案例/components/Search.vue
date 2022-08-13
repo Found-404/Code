@@ -34,7 +34,7 @@ export default {
                         isLoading:false,
                         errMsg:error.message,
                         users:[]
-                        });
+                    });
                 }
             )
         }

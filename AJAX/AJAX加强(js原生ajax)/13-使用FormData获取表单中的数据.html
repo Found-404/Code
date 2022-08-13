@@ -24,7 +24,7 @@
 
             // 创建formData 快速获取到form表单中的数据
             var fd = new FormData(form);
-            console.log(fd);
+            
             var xhr = new XMLHttpRequest();
             xhr.open('POST', 'http://www.liulongbin.top:3006/api/formdata');
             xhr.send(fd);
