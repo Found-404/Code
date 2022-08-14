@@ -7,13 +7,14 @@ import ReactDOM from 'react-dom/client';
 import App from './App'
 
 import store from './redux/store'
-import {Provider} from 'react-redux'
 
 // 渲染app到页面
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-   <Provider store={store}>   
-      <App/>
-   </Provider>
+      <App />
 );
+
+
+// 直接在入口文件监听，当产生了新的state时，自动调用
+store.subscribe(()=>{root.render(<App />)})
