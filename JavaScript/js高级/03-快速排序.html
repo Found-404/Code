@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function quickSort(items) {
+            if (items.length <= 1) {
+                return items
+            }
+            const pivotIndex = Math.floor(items.length / 2)
+            const pivotItem = items.splice(pivotIndex, 1)[0]
+            let left = []
+            let right = []
+            items.forEach((item) => {
+                if (item <= pivotItem) {
+                    left.push(item)
+                } else {
+                    right.push(item)
+                }
+            })
+            return quickSort(left).concat([pivotItem], quickSort(right))
+        }
+
+
+        let arr = [6, 5, 4, 5, 6, 4, 1, 5, 6]
+        function insertionSort(items) {
+            for (let i = 1; i < items.length; i++) {
+                if (items[i] < items[i - 1]) {
+                    const guard = items[i]
+                    let j = i - 1
+                    items[i] = items[j]
+                    while (j >= 0 && guard < items[j]) {
+                        items[j + 1] = items[j]
+                        j--
+                    }
+                    items[j + 1] = guard
+                }
+            }
+            return items
+        }
+
+    </script>
+</body>
+
+</html>

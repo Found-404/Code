@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        ul{
+            width: 100%;
+            text-align: center;
+            list-style-type: circle;
+        }
+        ul>li{
+            width: 2%;
+            float: left;
+        }
+        img{
+            width: 100px;
+        }
+    </style>
+    <title>
+        轮播事件
+    </title>
+</head>
+<body>
+    <div id="root" style="max-width: 700px;margin: 0 auto;"></div>
+</body>
+ 
+<script src="./js文件/react.development.js"></script>
+<script src="./js文件/react-dom.development.js"></script>
+<script src="./js文件/babel.min.js"></script>
+<script type="text/babel">
+    window.onload=()=>{
+        class Img extends React.Component{
+            constructor(props) {
+                super(props);
+                this.state={
+                    listImg:[
+                        './img/01.webp',  
+                        './img/02.webp',  
+                        './img/03.webp',  
+                    ],
+                    index:0
+                }
+            }
+            //计时器执行
+            indexChange(){
+                if(this.state.index == this.state.listImg.length-1){
+                    this.setState({
+                        index:0
+                    })
+                }else{
+                    // this.state.index++;
+                    this.setState({
+                        index:this.state.index + 1
+                    })
+                    // console.log(this.state.index);
+                }
+            }
+            componentDidMount(){
+                setInterval(()=>{
+                    this.indexChange();
+                },2000)
+            }
+            render(){
+                let {listImg,index} = this.state;
+                let imgList=listImg.map((item,imgIndex)=>{
+                    return  <img src={item} key={imgIndex} style={{'display':index == imgIndex ? 'block' : 'none'}} className='img'/>   
+                })
+                let liList=listImg.map((item2,imgIndex2)=>{
+                    return  <li key={imgIndex2} style={{'listStyleType':index == imgIndex2 ? 'initial' :'circle'}}></li>  
+                })
+                return (
+                    <div>
+                            {imgList}
+                        <div>
+                            <ul>
+                                {liList}
+                            </ul> 
+                        </div>
+                    </div>
+                )
+            
+            }
+        }
+        
+        ReactDOM.render(
+            <Img />,
+            document.getElementById("root")
+        )
+    }
+ 
+</script>
+</html>
