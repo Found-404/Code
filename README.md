@@ -1,6 +1,8 @@
 # Code
 ## 介绍
->HTML，CSS，JS，ES6，jQuery，node.js，mySql，bootstrapV4，AJAX，GIT，swiper，SuperSlide，Vue仅记录工程项目文件。
+>HTML，CSS，JS，ES6，jQuery，node.js，mySql，bootstrapV4，AJAX，GIT，swiper，SuperSlide，Vue，React，TypeScript，VueDemo项目，ReactDemo项目
+>
+>仅仅记录工程项目文件。
 
 ---
 
