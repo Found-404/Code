@@ -1,9 +1,9 @@
 import React from 'react'
+import Editor from 'components/Editor'
 
 function Edit() {
   return (
     <div>
-      文章编辑
     </div>
   )
 }

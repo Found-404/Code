@@ -4,7 +4,7 @@ import {INCREMENT,DECREMENT} from './constant'
 // import store from './store'
 
 
-// 所谓的异步action就是指action的值为Object类型的一般对象
+// 所谓的同步action就是指action的值为Object类型的一般对象
 export const createIncrementAction=(data)=> {
     return {type:INCREMENT,data}
 }

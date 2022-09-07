@@ -4,6 +4,10 @@
 @bgColor: #ddd;
 
 body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     background-color: @bgColor;
     color: #333;
     font-family: "微软雅黑";
@@ -12,4 +16,17 @@ body{
 a{
     text-decoration: none;
     color: #333;
+}
+
+
+.lginSection{
+   width: 300px;
+   &>div:nth-child(4){
+        & .login-form-button{
+            width: 300px;
+        }
+   }
+   &>div:nth-child(3){
+       margin-bottom: 5px;
+   }
 }
