@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function myNew(Con,...args) {
+        //     // 1.在内存中创建一个空对象
+        //     let obj = {};
+        //     // 2.将新对象的原型指针指向构造函数的原型属性
+        //     obj.__proto__ = Con.prototype;
+        //     // 3.构造函数内部的this被赋值为这个新对象(即this指向新对象)
+        //     // 4.执行构造函数内部的代码(给新对象添加属性)
+        //     let res = Con.apply(obj,args);//apply会执行Con函数,当然此时的this已经是obj了
+        //     // 5.如果构造函数返回非空对象,则返回该对象;否则,返回刚创建的新对象
+        //     if (res instanceof Object) {
+        //         return res
+        //     }else{
+        //         return obj
+        //     }
+        // }
+
+        // function Person(name){
+        //     this.name = name
+        // }
+
+        // Person.prototype.sayName = function(){
+        //     console.log('我的名字是'+this.name);
+        // }
+
+        // let p1 = myNew(Person,'wjk')
+
+        // console.log(p1);
+
+        // p1.sayName()
+
+
+
+        function myNew(Con,...args) {
+            let obj = {};     
+            obj.__proto__ = Con.prototype;
+            let res = Con.apply(obj,args);
+            if (res instanceof Object) {
+                return res
+            }else{
+                return obj
+            }
+        }
+
+        function Person(name,age) {
+            this.name = name;
+            this.age = age;
+        }
+        Person.prototype.sayHi = function(){
+            console.log('Hello world!');
+        }
+
+        let myPerson = myNew(Person,'张三',19)
+        myPerson.sayHi()
+        console.log(myPerson);
+
+
+
+
+
+    </script>
+</body>
+</html>

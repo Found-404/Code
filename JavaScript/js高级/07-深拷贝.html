@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // 测试数据
+        let arr = {
+            a:[
+                {
+                    name:'123',
+                    age:18
+                },
+                "测试测试",
+            ],
+            b:{
+                name:'张三',
+                demo(){
+                    console.log(123);
+                }
+            },
+            c:/[0-9]/,
+            d:new Date()
+        }
+        console.log(arr);
+
+        // myCopy(旧数据,新数据);
+        function myCopy(olds,news) {
+            for (const k in olds) {
+                let item = olds[k];
+                if (item instanceof RegExp) {
+                    // 如果是正则
+                    news[k] = item;
+                }else if(item instanceof Date){
+                    // 如果是日期
+                    news[k] = item;
+                }else if(item instanceof Array){
+                    // 如果是数组
+                    news[k] = [];
+                    // 递归,并将这个数组传入
+                    myCopy(item,news[k]);
+                }else if(item instanceof Object){
+                    // 如果是数组
+                    news[k] = {};
+                    // 递归,并将这个数组传入
+                    myCopy(item,news[k]);
+                }else{
+                    // 简单数据类型
+                    news[k] = item;
+                }
+            }
+        }
+
+        // 用新数据拷贝测试
+        let newArr = {};
+        myCopy(arr,newArr);
+
+        console.log(newArr);
+        newArr.c = '123';
+
+        console.log(newArr);
+        console.log(arr);
+        
+    </script>
+     <!-- <script>
+        function clone(olds,news) {
+            for (const k in olds) {
+                let item = olds[k]
+                if(item instanceof RegExp){
+                    news[k] = item
+                }else if(item instanceof Date) {
+                    news[k] = item
+                }else if (item instanceof Array) {
+                    news[k] = [];
+                    clone(item,news[k])
+                }else if(item instanceof Object){
+                    news[k] = {};
+                    clone(item,news[k])
+                }else{
+                    news[k] = item
+                }
+            }
+        }
+
+        let demos = {
+            a:'01',
+            b:[1,{
+                c:'02',
+                g:[
+                    {
+                        A:'11'
+                    },
+                    {
+                        B:'22'
+                    }
+                ]
+            },3],
+            d:{
+                e:/\d/
+            },
+            f:new Date()
+        }
+        let newarrs = {};
+        clone(demos,newarrs)
+        
+        console.log(demos);
+        newarrs.d.e = /\w/;
+        console.log(demos);
+        console.log(newarrs);
+    </script> -->
+</body>
+</html>

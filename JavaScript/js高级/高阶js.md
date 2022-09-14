@@ -1,17 +1,17 @@
 ### arguments和形参间的关系
 
 ```js
-        function b(x, y, a) {
-            arguments[2] = 10;
-            alert(a);
-        }
-        b(1, 2, 3);
+function b(x, y, a) {
+    arguments[2] = 10;
+    alert(a);
+}
+b(1, 2, 3);
 
-        function b(x, y, a) {
-            a = 10;
-            alert(arguments[2]);
-        }
-        b(1, 2, 3);
+function b(x, y, a) {
+    a = 10;
+    alert(arguments[2]);
+}
+b(1, 2, 3);
 ```
 
 正常输出全是10，10
@@ -288,3 +288,101 @@ console.log(f)
 最新版结果：2,undefined,undefined,10,100,123
 
 旧版结果：2,undefined,function(){},10,100,123
+
+### 深拷贝
+
+```js
+    // 测试数据
+    let arr = {
+        a:[
+            {
+                name:'123',
+                age:18
+            },
+            "测试测试",
+        ],
+        b:{
+            name:'张三',
+            demo(){
+                console.log(123);
+            }
+        },
+        c:/[0-9]/,
+        d:new Date()
+    }
+    console.log(arr);
+
+    // myCopy(旧数据,新数据);
+    function myCopy(olds,news) {
+        for (const k in olds) {
+            let item = olds[k];
+            if (item instanceof RegExp) {
+                // 如果是正则
+                news[k] = item;
+            }else if(item instanceof Date){
+                // 如果是日期
+                news[k] = item;
+            }else if(item instanceof Array){
+                // 如果是数组
+                news[k] = [];
+                // 递归,并将这个数组传入
+                myCopy(item,news[k]);
+            }else if(item instanceof Object){
+                // 如果是数组
+                news[k] = {};
+                // 递归,并将这个数组传入
+                myCopy(item,news[k]);
+            }else{
+                // 简单数据类型
+                news[k] = item;
+            }
+        }
+    }
+
+    // 用新数据拷贝测试
+    let newArr = {};
+    myCopy(arr,newArr);
+
+    console.log(newArr);
+    newArr.c = '123';
+
+    console.log(newArr);
+    console.log(arr);
+```
+
+### 手写new
+
+```js
+function myNew(Con,...args) {
+    // 1.在内存中创建一个空对象
+    let obj = {};
+    
+    // 2.将新对象的原型指针指向构造函数的原型属性
+    obj.__proto__ = Con.prototype;
+    
+    // 3.构造函数内部的this被赋值为这个新对象(即this指向新对象)
+    // 4.执行构造函数内部的代码(给新对象添加属性)
+    let res = Con.apply(obj,args);//apply会执行Con函数,当然此时的this已经是obj了
+    
+    // 5.如果构造函数返回非空对象,则返回该对象;否则,返回刚创建的新对象
+    if (res instanceof Object) {
+        return res
+    }else{
+        return obj
+    }
+}
+
+// 测试
+function Person(name){
+    this.name = name
+}
+Person.prototype.sayName = function(){
+    console.log('我的名字是'+this.name);
+}
+let p1 = myNew(Person,'wjk')
+
+console.log(p1);
+
+p1.sayName()
+```
+

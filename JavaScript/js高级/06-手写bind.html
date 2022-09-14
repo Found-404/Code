@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Function.prototype.myBind = function(context){
+        //     if (typeof this !== "function") {
+        //         // 如果调用者不是一个函数则返回错误对象
+        //         throw new Error("Is not Function")
+        //     }
+        //     // 储存this(调用者)
+        //     var self = this; //谁调用了该myBind,this就指向谁
+            
+        //     // 获取myBind函数从第二个参数到最后一个参数(这些参数是要传递给调用者的)
+        //     // 1.arguments为传入形参的集合
+        
+        //     var args = Array.prototype.slice.call(arguments,1);// 1传递给了slice
+        //     // Array.prototype.slice它的this指向了arguments,所以截取的是它的第二个参数到最后
+        //     var fNOP = function(){};
+
+        //     var fBound = function(){
+        //         // 这个时候的arguments是指bind返回的函数传入的参数
+        //         var bindArgs = Array.prototype.slice.call(arguments);
+        //         // concat,合并args和bindArgs并作为参数传递给调用者
+        //         return self.apply(this instanceof fNOP ? this : context, args.concat(bindArgs));
+        //         // 更改调用者的this指向传入的形参
+        //     }
+
+        //     fNOP.prototype = this.prototype;// 将fNOP的原型对象改变为调用者的原型对象
+        //     fBound.prototype = new fNOP();// 将fBound的原型对象改变为fNOP()的实例对象
+
+        //     // bind要return一个新的函数
+        //     return fBound
+        // }
+
+        
+
+        //#region 测试
+        // var value = 2;
+
+        // var foo = {
+        //     value: 1
+        // };
+
+        // function bar(name, age) {
+        //     this.habit = 'shopping';
+        //     console.log(this.value);
+        //     console.log(name);
+        //     console.log(age);
+        // }
+
+        // bar.prototype.friend = 'kevin';
+
+        // var bindFoo = bar.myBind(foo, 'daisy');
+
+        // var obj = new bindFoo('18');
+        // // undefined
+        // // daisy
+        // // 18
+        // console.log(obj.habit);
+        // console.log(obj.friend);
+        // shopping
+        // kevin
+        //#endregion
+
+        Function.prototype.binds = function(extents){
+            if (typeof this !== "function") {
+                throw new Error('is not function');
+            }
+            var self = this;
+            var reags = Array.prototype.slice.call(arguments,1);
+            let foo = function(){}
+            let Foos = function(){
+                var content = Array.prototype.slice.call(arguments);
+                return self.apply(this instanceof foo?this:extents,reags.concat(content))
+            }
+            foo.prototype = Foos.prototype;
+            Foos.prototype = new foo();
+            return Foos
+        }
+
+        //#region 
+        var value = 2;
+        var foo = {
+            value: 1
+        };
+        function bar(name, age) {
+            this.habit = 'shopping';
+            console.log(this.value);
+            console.log(name);
+            console.log(age);
+        }
+        bar.prototype.friend = 'kevin';
+        var bindFoo = bar.binds(foo,'daisy');
+        var obj = new bindFoo('18');
+        // undefined
+        // daisy
+        // 18
+        console.log(obj.habit);
+        console.log(obj.friend);
+        // shopping
+        // kevin
+        //#endregion
+    
+    
+    
+    
+    
+    </script>
+</body>
+</html>
