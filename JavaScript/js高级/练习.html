@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 手写new
+        function myNew1(Foo,...args) {
+            let obj = {};
+            obj.__proto__ = Foo.prototype;
+            let res = Foo.apply(obj,args);
+            if (res instanceof Object) {
+                return res
+            }else{
+                return obj
+            }
+        }
+        // 手写bind
+        Function.prototype.myBind = function(extents){
+            if (typeof this !== 'function') {
+                throw new Error('is not function');
+            }
+            var self = this;
+            var a = Array.prototype.slice.call(arguments,1);
+            var foo = function(){};
+            var Foo = function(){
+                var b = Array.prototype.slice.call(arguments);
+                return self.apply(this instanceof foo?this:extents,a.concat(b))
+            }
+            foo.prototype = Foo.prototype;
+            Foo.prototype = new foo();
+            return Foo;
+        }
+        // 深拷贝
+        function myClone(olds,news) {
+            for (const k in olds) {
+                let title = olds[k];
+                if (title instanceof RegExp) {
+                    news[k] = title;
+                }else if(title instanceof Date){
+                    news[k] = title;
+                }else if(title instanceof Array){
+                    news[k] = [];
+                    myClone(title,news[k])
+                }else if(title instanceof Object){
+                    news[k] = {};
+                    myClone(title,news[k])
+                }else{
+                    news[k]= title
+                }     
+            }
+        }
+    </script>
+
+    <script>
+        // 手写new
+        function myNew2(Foo,...args) {
+            let obj = {};
+            obj.__proto__ = Foo.prototype;
+            let res = Foo.apply(obj,args);
+            if (res instanceof Object) {
+                return res
+            }else{
+                return obj
+            }
+        }
+        // 手写bind
+        Function.prototype.myBind = function(extents){
+            if (typeof this !== 'function') {
+                throw new Error('is not Function');
+            }
+            var self = this;
+            var a = Array.prototype.slice.call(arguments,1);
+            var foo = function(){};
+            var Foo = function(){
+                var b = Array.prototype.slice.call(arguments);
+                return self.apply(this instanceof foo?this:extents,a.concat(b))               
+            }
+            foo.prototype = Foo.prototype;
+            Foo.prototype = new foo();
+            return Foo;
+        }
+        // 深拷贝
+        function myClone2(olds,news) {
+            for (const k in olds) {
+                let tit = olds[k];
+                if (tit instanceof RegExp) {
+                    news[k] = tit
+                }else if(tit instanceof Date){
+                    news[k] = tit
+                }else if (tit instanceof Array) {
+                    news[k] = [];
+                    myClone2(tit,news[k]);
+                }else if (tit instanceof Object) {
+                    news[k]= {};
+                    myClone2(tit,news[k])
+                }else{
+                    news[k] = tit;
+                }
+            }
+        }
+    </script>
+
+    <script>
+        function myNew2(Foo,...args) {
+            let obj = {};
+            obj.__proto__ = Foo.prototype;
+            let res = Foo.apply(obj,args);
+            if (res instanceof Object) {
+                return res
+            }else{
+                return obj
+            }
+        }
+
+        Function.prototype.myBind3 = function(extents){
+            if (typeof this !== 'function') {
+                throw new Error('is not function');
+            }
+            let self = this;
+            let a = Array.prototype.slice.call(arguments,1);
+            let foo = function(){};
+            let fooTwo = function(){
+                let b = Array.prototype.slice.call(arguments);
+                return self.apply(this instanceof foo?this:extents,a.concat(b))
+            }
+            foo.prototype = fooTwo.prototype;
+            fooTwo.prototype = new foo();
+
+            return fooTwo;
+        }
+    
+        function clone2(olds,news) {
+            for (const k in olds) {
+               let tit = olds[k];
+               if (tit instanceof RegExp) {
+                   news[k] = tit
+               }else if(tit instanceof Date){
+                   news[k] = tit
+               }else if(tit instanceof Object){
+                   news[k] = {};
+                   clone2(tit,news[k])
+               }else if (tit instanceof Array) {
+                   news[k] = [];
+                   clone2(tit,news[k])
+               }else{
+                   news[k] = tit
+               }
+            }
+        }
+    
+    </script>
+
+    <script>
+        function myNew3(foo,...args) {
+            let obj = {};
+            obj.__proto__ = foo.prototype;
+            let res = foo.apply(obj,args);
+            if (res instanceof Object) {
+                return res
+            }else{
+                return obj
+            }
+        }
+
+        Function.prototype.myBind = function(extents){
+            if (typeof this !== 'function') {
+                throw new Error('is not function');
+            }
+            var self = this;
+            var a = Array.prototype.slice.call(arguments,1);
+            var foo = function(){};
+            var Foo = function(){
+                var b = Array.prototype.slice.call(arguments);
+                return self.apply(this instanceof foo?this:extents,a.concat(b))
+            }
+            foo.prototype = Foo.prototype;
+            Foo.prototype = new foo();
+            return Foo;
+        }
+    
+        function clone(old,news) {
+            for (const k in old) {
+                var tit = old[k];
+                if (tit instanceof RegExp) {
+                    news[k] = tit
+                }else if(tit instanceof Date){
+                    news[k] = tit
+                }else if(tit instanceof Array){
+                    news[k] = [];
+                    clone(tit,news[k]);
+                }else if(tit instanceof Object){
+                    news[k] = {};
+                    clone(tit,news[k]);
+                }else{
+                    news[k] = tit
+                }
+            }
+        }
+
+    </script>
+
+    <script>
+        function myNew(Foo,...args) {
+            var obj = {};
+            obj.__proto__=Foo.prototype;
+            let res = Foo.apply(obj,args);
+            if (res instanceof Object) {
+                return res
+            }else{
+                return obj
+            }
+        }
+
+        Function.prototype.myBind4 = function(extents){
+            if (typeof this !== 'function') {
+                throw new Error('is not function');
+            }
+            var self = this;
+            var a = Array.prototype.slice.call(arguments,1);
+            var foo = function(){};
+            var Foo = function(){
+                var b = Array.prototype.slice.call(arguments);
+                return self.apply(this instanceof foo?this:extents,a.concat(b))
+            }
+            foo.prototype = Foo.prototype;
+            Foo.prototype = new foo();
+            return Foo
+        }
+
+        function clone4(old,news) {
+            for (const k in old) {
+                var tit = old[k];
+                if (tit instanceof RegExp) {
+                    news[k] = tit
+                }else if (tit instanceof Date) {
+                    news[k] = tit
+                }else if(tit instanceof Array){
+                    news[k] = [];
+                    clone4(tit,news[k])
+                }else if(tit instanceof Object){
+                    news[k] = {};
+                    clone4(tit,news[k])
+                }else {
+                    news[k] = tit
+                }
+            }
+        }
+    
+
+        
+    
+    
+    </script>
+</body>
+</html>
+
+
+
+
+
+

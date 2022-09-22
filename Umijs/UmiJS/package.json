@@ -2,6 +2,8 @@
   "private": true,
   "scripts": {
     "start": "umi dev",
+    "start:ui": "UMI_UI=1 umi dev",
+    "start:nomock": "MOCK=none umi dev",
     "build": "umi build",
     "postinstall": "umi generate tmp",
     "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
@@ -21,14 +23,17 @@
   },
   "dependencies": {
     "@ant-design/pro-layout": "^6.5.0",
+    "mockjs": "^1.1.0",
     "react": "17.x",
     "react-dom": "17.x",
     "umi": "^3.5.34"
   },
   "devDependencies": {
+    "@types/mockjs": "^1.0.6",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@umijs/preset-react": "1.x",
+    "@umijs/preset-ui": "^2.2.9",
     "@umijs/test": "^3.5.34",
     "lint-staged": "^10.0.7",
     "prettier": "^2.2.0",

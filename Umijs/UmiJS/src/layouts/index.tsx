@@ -8,11 +8,11 @@ const Index = (props:any) => {
       {/* <Link to="/user/one">用户1</Link>
       <Link to="/user/two">用户2</Link> */}
       <hr />
-      <NavLink to="/user/one">用户1</NavLink>
-      <NavLink to="/user/two">用户2</NavLink>
+      {/* <NavLink to="/user/one">用户1</NavLink>
+      <NavLink to="/user/two">用户2</NavLink> */}
 
         {props.children}
-      <h1>Footer</h1>
+      {/* <h1>Footer</h1> */}
     </div>
   )
 }

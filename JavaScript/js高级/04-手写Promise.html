@@ -14,7 +14,7 @@
 
         // 定义一个Promise类
         class myPromise {
-            constructor(executor){
+            constructor(executor){              
                 this.status = pending;
                 this.value = ""; // 存储成功原因
                 this.reason = "";// 存储失败原因
@@ -111,37 +111,35 @@
     <script>
 
         // 手写new
-        function myNew(Foo,...argus) {
-            let obj = {};
-            obj.__proto__ = Foo.prototype;
-            let res = Foo.apply(obj,argus);
-            if (res instanceof Object) {
-                return res
-            }else{
-                return obj
-            }
-        }
+       function myNew(Foo,...argus) {
+           let obj = {};
+           obj.__proto__=Foo.prototype;
+           let res = Foo.apply(obj,argus);
+           if (res instanceof Foo) {
+               return res
+           }else{
+               return obj
+           }
+       }
 
         // 手写bind
-        
         Function.prototype.myBind = function(extents){
-            if ( typeof this !== "function") {
-                throw new Error('is not function');
+            if (typeof this !== 'function') {
+                throw new Error('is not function')
             }
             var self = this;
-            var argus = Array.prototype.slice.call(arguments,1);
-            var Foo = function(){};
-            var Bfoo = function(){
-                var contes = Array.prototype.slice.call(arguments);
-                return self.apply(this instanceof Foo?this:extents,argus.concat(contes))
+            var a = Array.prototype.slice.call(arguments,1);
+            var foo = function(){};
+            var Foo = function(){
+                var b = Array.prototype.slice.call(arguments);
+                return self.apply(this instanceof foo?this:extents,a.concat(b))
             }
-            Foo.prototype = Bfoo.prototype;
-            Bfoo.prototype = new Foo();
 
-            return Bfoo
+            foo.prototype = Foo.prototype;
+            Foo.prototype = new foo();
+
+            return Foo;
         }
-
-
 
     </script>
 </body>

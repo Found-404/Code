@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // async function fun1() {
+        //     console.log("It is fun1")
+        //     let value1 = await fun2();
+        //     let value2 = await fun3();
+        //     console.log(value1, value2);
+        // }
+        // function fun2() {
+        //     console.log(123);
+        //     return "hello";
+        // }
+        // function fun3() {
+        //     return Promise.resolve("guguji");
+        // }
+        // fun1();
+        // console.log("outer1");
+        // console.log("outer2");
+        // console.log("outer3");
+        // console.log("outer4");
+        // console.log("outer5");
+        //It is fun1
+        // 123
+        //outer1
+        //outer2
+        //outer3
+        //outer4
+        //outer5
+        //hello guguji
+
+        // let p = new Promise((resolve,reject)=>{
+        //     // resolve('第一个promise');
+        //     reject('错误');
+        // })
+
+        // let p1 = p.then((res)=>{
+        //     console.log(res);
+        //     return '第二个promise'
+
+        // },(err)=>{
+        //     console.log(err);
+        //     return '错误'
+        // })
+        // console.log(p1);
+
+        // console.log(Promise.resolve('123'));
+        // .then((res)=>{
+
+        //     console.log(res);
+        //     return '第三个promise'
+
+        // }).then((res)=>{
+
+        //     console.log(res);
+        //     return '第四个promise'
+
+
+        // }).catch((err)=>{
+        //     console.log(err);
+        // })
+
+        // function ajax(url, success, fail) {
+        //     var client = new XMLHttpRequest();
+        //     client.open("GET", url);
+        //     client.onreadystatechange = function () {
+        //         if (this.readyState !== 4) {
+        //             return;
+        //         }
+        //         if (this.status === 200) {
+        //             success(this.response);
+        //         } else {
+        //             fail(new Error(this.statusText));
+        //         }
+        //     };
+        //     client.send();
+        // };
+
+        // function ajaxPro() {
+        //     return new Promise((resolve, reject) => {
+        //         var client = new XMLHttpRequest();
+        //         client.open("GET", url);
+        //         client.onreadystatechange = function () {
+        //             if (this.readyState !== 4) {
+        //                 return;
+        //             }
+        //             if (this.status === 200) {
+        //                 // success(this.response);
+        //                 resolve(this.response)
+        //             } else {
+        //                 // fail(new Error(this.statusText));
+        //                 reject(new Error(this.statusText))
+        //             }
+        //         };
+        //         client.send();
+        //     })
+        // }
+
+        // ajaxPro().then((res)=>{
+        //     console.log(res);
+        // }).catch((err)=>{
+        //     console.log(err);
+        // });
+
+
+
+        console.log(1);
+        Promise.resolve('resolve').then((res)=>{
+            console.log(res);
+        })
+        setTimeout(()=>{
+            console.log(2);
+        },0)
+        console.log(3);
+
+    </script>
+</body>
+
+</html>

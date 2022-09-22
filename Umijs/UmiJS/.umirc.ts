@@ -4,7 +4,6 @@ export default defineConfig({
   nodeModulesTransform: {
     type: 'none',
   },
-  base:"/admin/",
   title:"UmiJS",
   routes: [
     {
@@ -24,13 +23,23 @@ export default defineConfig({
             {component:'@/pages/404'}
           ]
         },
-        {component:'@/pages/404'}
+        {
+          path:'/dva',
+          component:'@/pages/dva'
+        },
+        {
+          path:'/login',
+          component:'@/pages/login',
+          title:'登录'
+        },
+        {
+          component:'@/pages/404'
+        },
       ],
     },
-
     {component:'@/pages/404'}
 
 
   ],
-  fastRefresh: {},
+  fastRefresh: {}
 });
