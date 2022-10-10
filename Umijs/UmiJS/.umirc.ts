@@ -11,16 +11,29 @@ export default defineConfig({
       component:'@/layouts/index', // 路由模板
       title:'首页',
       routes:[
-        {path:'/',component:'@/pages/index'},
+        {
+          path:'/',
+          component:'@/pages/index'
+        },
         {
           path:'/user',
           // wrappers:[
           //   '@/wrappers/auth'
           // ],
           routes:[
-            {path:'/user/one',component:'@/pages/user1', title:'用户页面1'},
-            {path:'/user/two',component:'@/pages/user2', title:'用户页面2'},
-            {component:'@/pages/404'}
+            {
+              path:'/user/one',
+              component:'@/pages/user1', 
+              title:'用户页面1'
+            },
+            {
+              path:'/user/two',
+              component:'@/pages/user2', 
+              title:'用户页面2'
+            },
+            {
+              component:'@/pages/404'
+            }
           ]
         },
         {
@@ -37,9 +50,9 @@ export default defineConfig({
         },
       ],
     },
-    {component:'@/pages/404'}
-
-
+    {
+      component:'@/pages/404'
+    }
   ],
   fastRefresh: {}
 });

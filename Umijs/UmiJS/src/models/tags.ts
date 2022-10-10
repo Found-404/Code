@@ -4,7 +4,6 @@ const getTags = ()=>{
     return request('/api/tags')
 }
 
-
 export default {
     // 效用model的时候,通过命名空间调用,不要和其他model同名
     namespace: 'tags',
@@ -18,7 +17,7 @@ export default {
         // callback：回调函数，执行其他操作就可以使用这个回调函数
         // put：将数据传递给reducers
         // call：访问外部的方法
-        *fetchTags({payload,callback},{put,call}){
+        *fetchTags({payload,callback}:any,{put,call}:any){
             // 获取tags数据
             const response = yield call(getTags)
 
@@ -31,7 +30,7 @@ export default {
     },
     // 更新 state
     reducers: {
-        setTagList(state,action){
+        setTagList(state:any,action:any){
             return {...state,tagsList:action.payload}
         }
     },
